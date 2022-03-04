@@ -18,4 +18,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('home','Api\v1\HomeController@home');
+Route::get('MediumTerm','App\Http\Controllers\HomeController@index');
+Route::get('ShortTerm','App\Http\Controllers\HomeController@show');

@@ -1,0 +1,94 @@
+ {
+    "data" : [
+        {
+            "stock" : "Adano Willmar",
+            "stockCat" : "Large Cap",
+            "cmp" : "379.70",
+            "bs" : "Buy",
+            "price" : "414 (11th Feb @ 10.35 pm)",
+            "target" : "414 (31st Mar)",
+            "disclosure" : "Have Interest"
+        } , 
+        {
+            "stock" : "PatelEng",
+            "stockCat" : "Micro Cop",
+            "cmp" : "25.15",
+            "bs" : "Buy",
+            "price" : "31 (5th Jan @ 02.01 pm)",
+            "target" : "33 (31st Mar)",
+            "disclosure" : "Have Interest"
+        } , 
+        {
+            "stock" : "CG Power",
+            "stockCat" : "Mid Corp",
+            "cmp" : "171.00",
+            "bs" : "Buy",
+            "price" : "241 (11th Feb @ 01.59 pm)",
+            "target" : "343 (31st Mar)",
+            "disclosure" : "Have Interest"
+        } , 
+        {
+            "stock" : "Zee Ent",
+            "stockCat" : "Mid Corp",
+            "cmp" : "228.90",
+            "bs" : "Buy",
+            "price" : "144 (17th Feb @ 03.10 pm)",
+            "target" : "215 (31st Mar)",
+            "disclosure" : "Have Interest"
+        } , 
+        {
+            "stock" : "Shipping Power",
+            "stockCat" : "Small Corp",
+            "cmp" : "103.95",
+            "bs" : "Buy",
+            "price" : "123 (16th Feb @ 11.35 am)",
+            "target" : "343 (31st Mar)",
+            "disclosure" : "Have Interest"
+        } , 
+        {
+            "stock" : "Orient Cement",
+            "stockCat" : "Small Corp",
+            "cmp" : "144.70",
+            "bs" : "Buy",
+            "price" : "216 (14th Feb @ 12.25 pm)",
+            "target" : "156 (31st Mar)",
+            "disclosure" : "No Interest"
+        } , 
+        {
+            "stock" : "Jain Irrigation",
+            "stockCat" : "Micro Cop",
+            "cmp" : "39.85",
+            "bs" : "Buy",
+            "price" : "201 (19th Feb @ 01.01 pm)",
+            "target" : "193 (31st Mar)",
+            "disclosure" : "Have Interest"
+        } , 
+        {
+            "stock" : "Wheels India",
+            "stockCat" : "Micro Cop",
+            "cmp" : "593.0",
+            "bs" : "Buy",
+            "price" : "414 (04th Mar @ 11.01 am)",
+            "target" : "55 (30th Jun)",
+            "disclosure" : "Have Interest"
+        } , 
+        {
+            "stock" : "Bank Of Maharashtra",
+            "stockCat" : "Mid Corp",
+            "cmp" : "17.80",
+            "bs" : "Buy",
+            "price" : "541 (11th Feb @ 02.35 pm)",
+            "target" : "1050 (31st Mar)",
+            "disclosure" : "Have Interest"
+        } , 
+        {
+            "stock" : "Hind Copper",
+            "stockCat" : "Mid Corp",
+            "cmp" : "117.60",
+            "bs" : "Buy",
+            "price" : "154 (23th Mar @ 12.35 pm)",
+            "target" : "28.5 (31st Mar)",
+            "disclosure" : "Have Interest"
+        } 
+    ]
+ }
