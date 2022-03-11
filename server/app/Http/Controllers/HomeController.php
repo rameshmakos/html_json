@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 Use public_path;
+Use DB;
 
 class HomeController extends Controller
 {
@@ -46,7 +47,7 @@ class HomeController extends Controller
             }            
         }
         $html = "<table>".$th.$td."</table>";
-        return $html;
+        return json_encode(['status'=>true,"data"=>$html]);
         
     }
 
@@ -101,7 +102,54 @@ class HomeController extends Controller
             }            
         }
         $html = "<table>".$th.$td."</table>";
-        return $html;
+        return json_encode(['status'=>true,"data"=>$html]);
         
+    }
+    public function insert()
+    {
+        $data= public_path('/pages/ShortTermData.json');
+        $data_array = json_decode(file_get_contents($data), true);
+        foreach ($data_array as $key => $value) {
+            DB::table('stock_short_details')->insert($value);
+        }
+    }
+    public function MediumTerm_data()
+    {
+        $data= public_path('/pages/MediumTermInvestment.json');
+        $data_array = json_decode(file_get_contents($data), true);
+        $column='';
+        $table='';
+        if(!empty($data_array))
+        {
+            foreach ($data_array['children'] as $key => $value) {
+                $table = strtok($value['database'], '.');
+                $column.=" ".$value['database'].",";
+            }
+        }
+        $column=rtrim($column,',');
+        $sql="SELECT $column FROM $table WHERE 1";
+        $results = DB::select( DB::raw($sql) );
+        $data_array['data']=$results;
+        return json_encode($data_array);
+    }
+    public function ShortTerm_data()
+    {
+        $data= public_path('/pages/ShortTermInvestment.json');
+        $data_array = json_decode(file_get_contents($data), true);
+        $column='';
+        $table='';
+        if(!empty($data_array))
+        {
+            foreach ($data_array['children'] as $key => $value) {
+                $arr = explode('.',$value['database']);
+                $column.=" ".$arr[1].",";
+                $table=$arr[0];
+            }
+        }
+        $column=rtrim($column,',');
+        $sql="SELECT $column FROM $table WHERE 1";
+        $results = DB::select(DB::raw($sql));  
+        $data_array['data']=$results;
+        return json_encode($data_array);
     }
 }

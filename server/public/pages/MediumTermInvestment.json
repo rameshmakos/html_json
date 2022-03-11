@@ -18,8 +18,8 @@
                 "padding" : "10px",
                 "fontSize" : "14px",
                 "backgroundColor" : "yellow"
-            }
-
+            },
+            "database":"stock_medium_details.stock"
         },
         {
             "id" : "C1222",
@@ -36,8 +36,8 @@
                 "lineHeight" : "20px",
                 "backgroundColor" : "yellow"
     
-            }
-
+            },
+            "database":"stock_medium_details.cmp"
         },
         {
             "id" : "C1223",
@@ -54,7 +54,8 @@
                 "lineHeight" : "20px",
                 "backgroundColor" : "yellow"
     
-            }
+            },
+            "database":"stock_medium_details.price"
 
         },
         {
@@ -72,7 +73,8 @@
                 "lineHeight" : "20px",
                 "backgroundColor" : "yellow"
     
-            }
+            },
+            "database":"stock_medium_details.target"
 
         },
         {
@@ -90,7 +92,8 @@
                 "lineHeight" : "20px",
                 "backgroundColor" : "yellow"
     
-            }
+            },
+            "database":"stock_medium_details.info"
 
         },
         {
@@ -108,7 +111,8 @@
                 "lineHeight" : "20px",
                 "backgroundColor" : "yellow"
     
-            }
+            },
+            "database":"stock_medium_details.disclosure"
 
         },
         {
@@ -127,8 +131,8 @@
             
                 "backgroundColor" : "yellow"
     
-            }
-
+            },
+            "database":"stock_medium_details.readmore"
         }
     ]
 

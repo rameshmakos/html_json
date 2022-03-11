@@ -19,7 +19,8 @@
                 "textAlign" : "center",
                 "lineHeight" : "20px",
                 "backgroundColor" : "lightgreen"
-            }
+            },
+            "database":"stock_short_details.stock"
         },
         {
             "id" : "C1222",
@@ -36,7 +37,8 @@
                 "lineHeight" : "20px",
                 "backgroundColor" : "lightgreen"
     
-            }
+            },
+            "database":"stock_short_details.stockCat"
 
         },
         {
@@ -54,7 +56,8 @@
                 "lineHeight" : "20px",
                 "backgroundColor" : "lightgreen"
     
-            }
+            },
+            "database":"stock_short_details.cmp"
 
         },
         {
@@ -72,8 +75,8 @@
                 "lineHeight" : "20px",
                 "backgroundColor" : "lightgreen"
     
-            }
-
+            },
+            "database":"stock_short_details.bs"
         },
         {
             "id" : "C1225",
@@ -90,8 +93,8 @@
                 "lineHeight" : "20px",
                 "backgroundColor" : "lightgreen"
     
-            }
-
+            },
+            "database":"stock_short_details.price"
         },
         {
             "id" : "C1226",
@@ -107,9 +110,8 @@
                 "textAlign" : "center",
                 "lineHeight" : "20px",
                 "backgroundColor" : "lightgreen"
-    
-            }
-
+            },
+            "database":"stock_short_details.target"
         },
         {
             "id" : "C1227",
@@ -125,9 +127,8 @@
                 "textAlign" : "center",
                 "lineHeight" : "20px",
                 "backgroundColor" : "lightgreen"
-    
-            }
-
+            },
+            "database":"stock_short_details.disclosure"
         }
     ]
 

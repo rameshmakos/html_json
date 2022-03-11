@@ -20,3 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('MediumTerm','App\Http\Controllers\HomeController@index');
 Route::get('ShortTerm','App\Http\Controllers\HomeController@show');
+
+Route::get('MediumTerm_data','App\Http\Controllers\HomeController@MediumTerm_data');
+Route::get('ShortTerm_data','App\Http\Controllers\HomeController@ShortTerm_data');
+//Route::get('insert','App\Http\Controllers\HomeController@insert');
