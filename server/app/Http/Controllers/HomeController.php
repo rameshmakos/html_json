@@ -122,8 +122,8 @@ class HomeController extends Controller
         if(!empty($data_array))
         {
             foreach ($data_array['children'] as $key => $value) {
-                $table = strtok($value['database'], '.');
-                $column.=" ".$value['database'].",";
+                $table = strtok($value['data_source'], '.');
+                $column.=" ".$value['data_source'].",";
             }
         }
         $column=rtrim($column,',');
@@ -141,9 +141,8 @@ class HomeController extends Controller
         if(!empty($data_array))
         {
             foreach ($data_array['children'] as $key => $value) {
-                $arr = explode('.',$value['database']);
-                $column.=" ".$arr[1].",";
-                $table=$arr[0];
+                $table = strtok($value['data_source'], '.');
+                $column.=" ".$value['data_source'].",";
             }
         }
         $column=rtrim($column,',');

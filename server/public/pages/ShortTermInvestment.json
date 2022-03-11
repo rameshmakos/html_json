@@ -20,7 +20,7 @@
                 "lineHeight" : "20px",
                 "backgroundColor" : "lightgreen"
             },
-            "database":"stock_short_details.stock"
+            "data_source":"stock_short_details.stock"
         },
         {
             "id" : "C1222",
@@ -38,7 +38,7 @@
                 "backgroundColor" : "lightgreen"
     
             },
-            "database":"stock_short_details.stockCat"
+            "data_source":"stock_short_details.stockCat"
 
         },
         {
@@ -57,7 +57,7 @@
                 "backgroundColor" : "lightgreen"
     
             },
-            "database":"stock_short_details.cmp"
+            "data_source":"stock_short_details.cmp"
 
         },
         {
@@ -76,7 +76,7 @@
                 "backgroundColor" : "lightgreen"
     
             },
-            "database":"stock_short_details.bs"
+            "data_source":"stock_short_details.bs"
         },
         {
             "id" : "C1225",
@@ -94,7 +94,7 @@
                 "backgroundColor" : "lightgreen"
     
             },
-            "database":"stock_short_details.price"
+            "data_source":"stock_short_details.price"
         },
         {
             "id" : "C1226",
@@ -111,7 +111,7 @@
                 "lineHeight" : "20px",
                 "backgroundColor" : "lightgreen"
             },
-            "database":"stock_short_details.target"
+            "data_source":"stock_short_details.target"
         },
         {
             "id" : "C1227",
@@ -128,7 +128,7 @@
                 "lineHeight" : "20px",
                 "backgroundColor" : "lightgreen"
             },
-            "database":"stock_short_details.disclosure"
+            "data_source":"stock_short_details.disclosure"
         }
     ]
 

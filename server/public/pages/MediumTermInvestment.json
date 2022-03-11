@@ -19,7 +19,7 @@
                 "fontSize" : "14px",
                 "backgroundColor" : "yellow"
             },
-            "database":"stock_medium_details.stock"
+            "data_source":"stock_medium_details.stock"
         },
         {
             "id" : "C1222",
@@ -37,7 +37,7 @@
                 "backgroundColor" : "yellow"
     
             },
-            "database":"stock_medium_details.cmp"
+            "data_source":"stock_medium_details.cmp"
         },
         {
             "id" : "C1223",
@@ -55,7 +55,7 @@
                 "backgroundColor" : "yellow"
     
             },
-            "database":"stock_medium_details.price"
+            "data_source":"stock_medium_details.price"
 
         },
         {
@@ -74,7 +74,7 @@
                 "backgroundColor" : "yellow"
     
             },
-            "database":"stock_medium_details.target"
+            "data_source":"stock_medium_details.target"
 
         },
         {
@@ -93,7 +93,7 @@
                 "backgroundColor" : "yellow"
     
             },
-            "database":"stock_medium_details.info"
+            "data_source":"stock_medium_details.info"
 
         },
         {
@@ -112,7 +112,7 @@
                 "backgroundColor" : "yellow"
     
             },
-            "database":"stock_medium_details.disclosure"
+            "data_source":"stock_medium_details.disclosure"
 
         },
         {
@@ -132,7 +132,7 @@
                 "backgroundColor" : "yellow"
     
             },
-            "database":"stock_medium_details.readmore"
+            "data_source":"stock_medium_details.readmore"
         }
     ]
 
