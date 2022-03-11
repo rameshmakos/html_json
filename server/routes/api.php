@@ -24,3 +24,6 @@ Route::get('ShortTerm','App\Http\Controllers\HomeController@show');
 Route::get('MediumTerm_data','App\Http\Controllers\HomeController@MediumTerm_data');
 Route::get('ShortTerm_data','App\Http\Controllers\HomeController@ShortTerm_data');
 //Route::get('insert','App\Http\Controllers\HomeController@insert');
+
+Route::get('BigGems_data','App\Http\Controllers\HomeController@BigGems_data');
+Route::get('OptionCalls_data','App\Http\Controllers\HomeController@OptionCalls_data');

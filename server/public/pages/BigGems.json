@@ -1,0 +1,117 @@
+{
+    "id" : 41221,
+    "component" : "MediumTermInvestment",
+    "style" : {
+        "backgroundColor" : "yellow"
+    },
+    "children" : [
+        {
+            "id" : "E1221",
+            "name" : "Stock",
+            "visibility": true, 
+            "style" : {
+                "width" : "14%",
+                "fontWeight" : 600,
+                "letterSpacing" : "0.025em",
+                "textAlign" : "center",
+                "padding" : "10px",
+                "fontSize" : "14px",
+                "backgroundColor" : "orange"
+            },
+            "data_source":"biggems.stock"
+        },
+        {
+            "id" : "E1222",
+            "name" : "CMP",
+            "visibility": true, 
+            "style" : {
+                "width" : "5%",
+                "padding" : "12px",
+                "fontSize" : "14px",
+                "fontWeight" : 600,
+                "letterSpacing" : "0.025em",
+                "textAlign" : "center",
+                "lineHeight" : "20px",
+                "backgroundColor" : "orange"
+    
+            },
+            "data_source":"biggems.cmp"
+
+        },
+        {
+            "id" : "E1223",
+            "name" : "Buy/Sell",
+            "visibility": true, 
+            "style" : {
+                "width" : "10%",
+                "padding" : "12px",
+                "fontSize" : "14px",
+                "fontWeight" : 600,
+                "letterSpacing" : "0.025em",
+                "textAlign" : "center",
+                "lineHeight" : "20px",
+                "backgroundColor" : "orange"
+    
+            },
+            "data_source":"biggems.bs"
+
+        },
+        {
+            "id" : "E1224",
+            "name" : "Target",
+            "visibility": true, 
+            "style" : {
+                "width" : "10%",
+                "padding" : "12px",
+                "fontSize" : "14px",
+                "fontWeight" : 600,
+                "letterSpacing" : "0.025em",
+                "textAlign" : "center",
+                "lineHeight" : "20px",
+                "backgroundColor" : "orange"
+    
+            },
+            "data_source":"biggems.target"
+
+        },
+        {
+            "id" : "E1225",
+            "name" : "Description",
+            "visibility": true, 
+            "style" : {
+                "width" : "10%",
+                "padding" : "12px",
+                "fontSize" : "14px",
+                "fontWeight" : 600,
+                "letterSpacing" : "0.025em",
+                "textAlign" : "center",
+                "lineHeight" : "20px",
+                "backgroundColor" : "orange"
+    
+            },
+            "data_source":"biggems.description"
+
+        },
+        {
+            "id" : "E1226",
+            "name" : "Disclosure",
+            "visibility": true, 
+            "style" : {
+                "width" : "10%",
+                "padding" : "12px",
+                "fontSize" : "14px",
+                "fontWeight" : 600,
+                "letterSpacing" : "0.025em",
+                "textAlign" : "center",
+                "lineHeight" : "20px",
+                "backgroundColor" : "orange"
+    
+            },
+            "data_source":"biggems.disclosure"
+
+
+        }
+       
+    ]
+
+}
