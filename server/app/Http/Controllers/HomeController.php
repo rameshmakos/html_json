@@ -132,22 +132,26 @@ class HomeController extends Controller
         $data_array['data']=$results;
         return json_encode($data_array);
     }
-    public function ShortTerm_data()
+    public function ShortTerm_data($mode)
     {
         $data= public_path('/pages/ShortTermInvestment.json');
         $data_array = json_decode(file_get_contents($data), true);
         $column='';
         $table='';
-        if(!empty($data_array))
+
+        $dataSource=isset($data_array['Desktop']['children'][0]['dataSource']) ? $data_array['Desktop']['children'][0]['dataSource'] : NULL;
+        $table = strtok($dataSource,'.');
+        if(!empty($data_array[$mode]['children']))
         {
-            foreach ($data_array['children'] as $key => $value) {
-                $table = strtok($value['data_source'], '.');
-                $column.=" ".$value['data_source'].",";
+            foreach ($data_array[$mode]['children'] as $key => $value) {
+                //
+                $column.=" ".$value['dataSource'].",";
             }
         }
         $column=rtrim($column,',');
         $sql="SELECT $column FROM $table WHERE 1";
-        $results = DB::select(DB::raw($sql));  
+        //echo $sql;exit();
+        $results = DB::select(DB::raw($sql));
         $data_array['data']=$results;
         return json_encode($data_array);
     }
