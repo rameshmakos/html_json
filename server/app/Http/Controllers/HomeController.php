@@ -141,18 +141,34 @@ class HomeController extends Controller
 
         $dataSource=isset($data_array['Desktop']['children'][0]['dataSource']) ? $data_array['Desktop']['children'][0]['dataSource'] : NULL;
         $table = strtok($dataSource,'.');
+        $children=NULL;
         if(!empty($data_array[$mode]['children']))
         {
+            $children=$data_array[$mode]['children'];
             foreach ($data_array[$mode]['children'] as $key => $value) {
-                //
                 $column.=" ".$value['dataSource'].",";
             }
         }
         $column=rtrim($column,',');
         $sql="SELECT $column FROM $table WHERE 1";
         //echo $sql;exit();
+        $data=array();
         $results = DB::select(DB::raw($sql));
-        $data_array['data']=$results;
+        if(!empty($results))
+        {
+            foreach ($results as $key => $value) {
+                $row_data=array();
+                foreach ($value as $key1 => $value1) {
+                    array_push($row_data,$value1);
+                }
+                array_push($data,$row_data);
+            }
+        }
+        unset($data_array['Desktop']);
+        unset($data_array['Tab']);
+        unset($data_array['Mobile']);
+        $data_array['children']=$children;
+        $data_array['data']=$data;
         return json_encode($data_array);
     }
     public function BigGems_data()
