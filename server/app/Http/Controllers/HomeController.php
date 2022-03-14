@@ -113,23 +113,42 @@ class HomeController extends Controller
             DB::table('biggems')->insert($value);
         }
     }
-    public function MediumTerm_data()
+    public function MediumTerm_data($mode)
     {
         $data= public_path('/pages/MediumTermInvestment.json');
         $data_array = json_decode(file_get_contents($data), true);
         $column='';
         $table='';
-        if(!empty($data_array))
+
+        $dataSource=isset($data_array['Desktop']['children'][0]['dataSource']) ? $data_array['Desktop']['children'][0]['dataSource'] : NULL;
+        $table = strtok($dataSource,'.');
+        $children=NULL;
+        if(!empty($data_array[$mode]['children']))
         {
-            foreach ($data_array['children'] as $key => $value) {
-                $table = strtok($value['data_source'], '.');
-                $column.=" ".$value['data_source'].",";
+            $children=$data_array[$mode]['children'];
+            foreach ($data_array[$mode]['children'] as $key => $value) {
+                $column.=" ".$value['dataSource'].",";
             }
         }
         $column=rtrim($column,',');
         $sql="SELECT $column FROM $table WHERE 1";
-        $results = DB::select( DB::raw($sql) );
-        $data_array['data']=$results;
+        $data=array();
+        $results = DB::select(DB::raw($sql));
+        if(!empty($results))
+        {
+            foreach ($results as $key => $value) {
+                $row_data=array();
+                foreach ($value as $key1 => $value1) {
+                    array_push($row_data,$value1);
+                }
+                array_push($data,$row_data);
+            }
+        }
+        unset($data_array['Desktop']);
+        unset($data_array['Tab']);
+        unset($data_array['Mobile']);
+        $data_array['children']=$children;
+        $data_array['data']=$data;
         return json_encode($data_array);
     }
     public function ShortTerm_data($mode)
@@ -171,7 +190,7 @@ class HomeController extends Controller
         $data_array['data']=$data;
         return json_encode($data_array);
     }
-    public function BigGems_data()
+    public function BigGems_data($mode)
     {
         $data= public_path('/pages/BigGems.json');
         $data_array = json_decode(file_get_contents($data), true);
@@ -190,23 +209,43 @@ class HomeController extends Controller
         $data_array['data']=$results;
         return json_encode($data_array);
     }
-    public function OptionCalls_data()
+    public function OptionCalls_data($mode)
     {
         $data= public_path('/pages/OptionCalls.json');
         $data_array = json_decode(file_get_contents($data), true);
         $column='';
         $table='';
-        if(!empty($data_array))
+
+        $dataSource=isset($data_array['Desktop']['children'][0]['dataSource']) ? $data_array['Desktop']['children'][0]['dataSource'] : NULL;
+        $table = strtok($dataSource,'.');
+        $children=NULL;
+        if(!empty($data_array[$mode]['children']))
         {
-            foreach ($data_array['children'] as $key => $value) {
-                $table = strtok($value['data_source'], '.');
-                $column.=" ".$value['data_source'].",";
+            $children=$data_array[$mode]['children'];
+            foreach ($data_array[$mode]['children'] as $key => $value) {
+                $column.=" ".$value['dataSource'].",";
             }
         }
         $column=rtrim($column,',');
         $sql="SELECT $column FROM $table WHERE 1";
-        $results = DB::select( DB::raw($sql) );
-        $data_array['data']=$results;
+        //echo $sql;exit();
+        $data=array();
+        $results = DB::select(DB::raw($sql));
+        if(!empty($results))
+        {
+            foreach ($results as $key => $value) {
+                $row_data=array();
+                foreach ($value as $key1 => $value1) {
+                    array_push($row_data,$value1);
+                }
+                array_push($data,$row_data);
+            }
+        }
+        unset($data_array['Desktop']);
+        unset($data_array['Tab']);
+        unset($data_array['Mobile']);
+        $data_array['children']=$children;
+        $data_array['data']=$data;
         return json_encode($data_array);
     }
 }

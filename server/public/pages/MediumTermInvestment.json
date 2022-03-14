@@ -1,139 +1,255 @@
 {
-    "id" : 11221,
-    "component" : "MediumTermInvestment",
-    "style" : {
-        "backgroundColor" : "yellow"
-    },
-    "children" : [
-        {
-            "id" : "C1221",
-            "name" : "Stock Name",
-            "visibility": true, 
-            "index" :"stock",
-            "style" : {
-                "width" : "10%",
-                "fontWeight" : 600,
-                "letterSpacing" : "0.025em",
-                "textAlign" : "center",
-                "padding" : "10px",
-                "fontSize" : "14px",
-                "backgroundColor" : "yellow"
+   "id":11221,
+   "component":"MediumTermInvestment",
+   "style":{
+      "backgroundColor":"yellow"
+   },
+   "Desktop":{
+      "children":[
+         {
+            "id":"D1221",
+            "name":"Stock",
+            "visibility":true,
+            "style":{
+               "width":"20%",
+               "fontWeight":600,
+               "letterSpacing":"0.025em",
+               "textAlign":"center",
+               "padding":"10px",
+               "fontSize":"14px",
+               "backgroundColor":"yellow"
             },
-            "data_source":"stock_medium_details.stock"
-        },
-        {
-            "id" : "C1222",
-            "name" : "CMP",
-            "visibility": true, 
-            "index" :"cmp",
-            "style" : {
-                "width" : "5%",
-                "padding" : "12px",
-                "fontSize" : "14px",
-                "fontWeight" : 600,
-                "letterSpacing" : "0.025em",
-                "textAlign" : "center",
-                "lineHeight" : "20px",
-                "backgroundColor" : "yellow"
-    
+            "dataSource":"stock_short_details.stock"
+         },
+         {
+            "id":"D1222",
+            "name":"Stock Category",
+            "visibility":true,
+            "style":{
+               "width":"5%",
+               "padding":"12px",
+               "fontSize":"14px",
+               "fontWeight":600,
+               "letterSpacing":"0.025em",
+               "textAlign":"center",
+               "lineHeight":"20px",
+               "backgroundColor":"yellow"
             },
-            "data_source":"stock_medium_details.cmp"
-        },
-        {
-            "id" : "C1223",
-            "name" : "Price",
-            "visibility": true, 
-            "index" :"price",
-            "style" : {
-                "width" : "10%",
-                "padding" : "12px",
-                "fontSize" : "14px",
-                "fontWeight" : 600,
-                "letterSpacing" : "0.025em",
-                "textAlign" : "center",
-                "lineHeight" : "20px",
-                "backgroundColor" : "yellow"
-    
+            "dataSource":"stock_short_details.stockCat"
+         },
+         {
+            "id":"D1222",
+            "name":"CMP",
+            "visibility":true,
+            "style":{
+               "width":"5%",
+               "padding":"12px",
+               "fontSize":"14px",
+               "fontWeight":600,
+               "letterSpacing":"0.025em",
+               "textAlign":"center",
+               "lineHeight":"20px",
+               "backgroundColor":"yellow"
             },
-            "data_source":"stock_medium_details.price"
-
-        },
-        {
-            "id" : "C1224",
-            "name" : "Target",
-            "visibility": true, 
-            "index" :"target",
-            "style" : {
-                "width" : "10%",
-                "padding" : "12px",
-                "fontSize" : "14px",
-                "fontWeight" : 600,
-                "letterSpacing" : "0.025em",
-                "textAlign" : "center",
-                "lineHeight" : "20px",
-                "backgroundColor" : "yellow"
-    
+            "dataSource":"stock_short_details.cmp"
+         },
+         {
+            "id":"D1223",
+            "name":"Price",
+            "visibility":true,
+            "style":{
+               "width":"10%",
+               "padding":"12px",
+               "fontSize":"14px",
+               "fontWeight":600,
+               "letterSpacing":"0.025em",
+               "textAlign":"center",
+               "lineHeight":"20px",
+               "backgroundColor":"yellow"
             },
-            "data_source":"stock_medium_details.target"
-
-        },
-        {
-            "id" : "C1225",
-            "name" : "Info",
-            "visibility": true, 
-            "index" :"info",
-            "style" : {
-                "width" : "10%",
-                "padding" : "12px",
-                "fontSize" : "14px",
-                "fontWeight" : 600,
-                "letterSpacing" : "0.025em",
-                "textAlign" : "center",
-                "lineHeight" : "20px",
-                "backgroundColor" : "yellow"
-    
+            "dataSource":"stock_short_details.price"
+         },
+         {
+            "id":"D1224",
+            "name":"Target",
+            "visibility":true,
+            "style":{
+               "width":"10%",
+               "padding":"12px",
+               "fontSize":"14px",
+               "fontWeight":600,
+               "letterSpacing":"0.025em",
+               "textAlign":"center",
+               "lineHeight":"20px",
+               "backgroundColor":"yellow"
             },
-            "data_source":"stock_medium_details.info"
-
-        },
-        {
-            "id" : "C1226",
-            "name" : "Disclosure",
-            "visibility": true, 
-            "index" :"disclosure",
-            "style" : {
-                "width" : "10%",
-                "padding" : "12px",
-                "fontSize" : "14px",
-                "fontWeight" : 600,
-                "letterSpacing" : "0.025em",
-                "textAlign" : "center",
-                "lineHeight" : "20px",
-                "backgroundColor" : "yellow"
-    
+            "dataSource":"stock_short_details.target"
+         },
+         {
+            "id":"D1225",
+            "name":"Info",
+            "visibility":true,
+            "style":{
+               "width":"10%",
+               "padding":"12px",
+               "fontSize":"14px",
+               "fontWeight":600,
+               "letterSpacing":"0.025em",
+               "textAlign":"center",
+               "lineHeight":"20px",
+               "backgroundColor":"yellow"
             },
-            "data_source":"stock_medium_details.disclosure"
-
-        },
-        {
-            "id" : "C1227",
-            "name" : "ReadMore",
-            "visibility": true, 
-            "index" :"readmore",
-            "style" : {
-                "width" : "10%",
-                "padding" : "12px",
-                "fontSize" : "14px",
-                "fontWeight" : 600,
-                "letterSpacing" : "0.025em",
-                "textAlign" : "center",
-                "lineHeight" : "20px",
-            
-                "backgroundColor" : "yellow"
-    
+            "dataSource":"stock_short_details.info"
+         },
+         {
+            "id":"D1226",
+            "name":"Disclosure",
+            "visibility":true,
+            "style":{
+               "width":"10%",
+               "padding":"12px",
+               "fontSize":"14px",
+               "fontWeight":600,
+               "letterSpacing":"0.025em",
+               "textAlign":"center",
+               "lineHeight":"20px",
+               "backgroundColor":"yellow"
             },
-            "data_source":"stock_medium_details.readmore"
-        }
-    ]
-
+            "dataSource":"stock_short_details.disclosure"
+         },
+         {
+            "id":"D1227",
+            "name":"ReadMore",
+            "visibility":true,
+            "style":{
+               "width":"10%",
+               "padding":"12px",
+               "fontSize":"14px",
+               "fontWeight":600,
+               "letterSpacing":"0.025em",
+               "textAlign":"center",
+               "lineHeight":"20px",
+               "backgroundColor":"yellow"
+            },
+            "dataSource":"stock_short_details.readmore"
+         }
+      ]
+   },
+   "Tab":{
+      "children":[
+         {
+            "id":"T1221",
+            "name":"Stock",
+            "visibility":true,
+            "style":{
+               "width":"10%",
+               "fontWeight":600,
+               "letterSpacing":"0.025em",
+               "textAlign":"center",
+               "padding":"10px",
+               "fontSize":"14px",
+               "backgroundColor":"yellow"
+            },
+            "dataSource":"CONCAT(stock_short_details.stock,'\n',stock_short_details.stockCat,'\n',stock_short_details.cmp) as stock"
+         },
+         {
+            "id":"T1223",
+            "name":"Call Info",
+            "visibility":true,
+            "style":{
+               "width":"10%",
+               "padding":"12px",
+               "fontSize":"14px",
+               "fontWeight":600,
+               "letterSpacing":"0.025em",
+               "textAlign":"center",
+               "lineHeight":"20px",
+               "backgroundColor":"yellow"
+            },
+            "dataSource":"concat(stock_short_details.price,'\n Target: ',stock_short_details.target) as call_info"
+         },
+         {
+            "id":"T1224",
+            "name":"Disclosure",
+            "visibility":true,
+            "style":{
+               "width":"10%",
+               "fontWeight":600,
+               "letterSpacing":"0.025em",
+               "textAlign":"center",
+               "padding":"10px",
+               "fontSize":"14px",
+               "backgroundColor":"yellow"
+            },
+            "dataSource":"concat(' Disclosure :',stock_short_details.disclosure) as disclosure"
+         },
+         {
+            "id":"T1225",
+            "name":"Brief Info",
+            "visibility":true,
+            "style":{
+               "width":"10%",
+               "padding":"12px",
+               "fontSize":"14px",
+               "fontWeight":600,
+               "letterSpacing":"0.025em",
+               "textAlign":"center",
+               "lineHeight":"20px",
+               "backgroundColor":"yellow"
+            },
+            "dataSource":"concat(stock_short_details.info,' ',stock_short_details.readmore) as Info"
+         }
+      ]
+   },
+   "Mobile":{
+      "children":[
+         {
+            "id":"M1231",
+            "name":"Stock",
+            "visibility":true,
+            "style":{
+               "width":"20%",
+               "fontWeight":600,
+               "letterSpacing":"0.025em",
+               "textAlign":"center",
+               "padding":"10px",
+               "fontSize":"14px",
+               "backgroundColor":"yellow"
+            },
+            "dataSource":"concat(stock,',',stockCat,',',cmp,' Disclosure :',disclosure) as stock"
+         },
+         {
+            "id":"M1232",
+            "name":"Call Info",
+            "visibility":true,
+            "style":{
+               "width":"20%",
+               "padding":"12px",
+               "fontSize":"14px",
+               "fontWeight":600,
+               "letterSpacing":"0.025em",
+               "textAlign":"center",
+               "lineHeight":"20px",
+               "backgroundColor":"yellow"
+            },
+            "dataSource":"concat(price,'\n Target:',target) as call_info"
+         },
+         {
+            "id":"M1233",
+            "name":"Bried Info",
+            "visibility":true,
+            "style":{
+               "width":"10%",
+               "padding":"12px",
+               "fontSize":"14px",
+               "fontWeight":600,
+               "letterSpacing":"0.025em",
+               "textAlign":"center",
+               "lineHeight":"20px",
+               "backgroundColor":"yellow"
+            },
+            "dataSource":"concat(stock_short_details.info,' ',stock_short_details.readmore) as Info"
+         }
+      ]
+   }
 }
