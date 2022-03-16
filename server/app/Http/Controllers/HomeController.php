@@ -248,4 +248,40 @@ class HomeController extends Controller
         $data_array['data']=$data;
         return json_encode($data_array);
     }
+
+    public function dom_data()
+    {
+        $html=" <table className='w-full' style={pageData.style}>
+
+                        <thead className='bg-gray-50 border-b-2 border-gray-200'>
+                            {
+                                <tr className='rounded-lg text-sm  font-medium text-gray-700 text-center'>
+                                    {pageData.children.map((item, index) => (
+                                        <>
+                                            {item.visibility === true && <th style={item.style}>{item.name}</th>}
+                                        </>
+                                    ))}
+                                </tr>
+
+                            }
+
+                        </thead>
+                        <tbody className='text-[12px] md:text-[13px] lg:text-[14px] font-normal text-gray- divide-y divide-gray-100'>
+                            {
+                                pageData.data.map((data, indexH) => (
+                                    <tr key={indexH} className='hover:bg-gray-100 border-b border-gray-200 bg-white text-center py-4'>
+                                        {
+                                            data.map((item) => (
+                                                <td key={item} className='tbl-cell-pt'>{item}</td>
+                                            ))
+                                        }
+
+                                    </tr>
+                                ))
+                            }
+
+                        </tbody>
+                    </table>";
+                    return json_encode(['html'=>$html]);
+    }
 }

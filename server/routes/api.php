@@ -27,3 +27,4 @@ Route::get('ShortTerm_data/{mode}','App\Http\Controllers\HomeController@ShortTer
 
 Route::get('BigGems_data/{mode}','App\Http\Controllers\HomeController@BigGems_data');
 Route::get('OptionCalls_data/{mode}','App\Http\Controllers\HomeController@OptionCalls_data');
+Route::get('dom_data','App\Http\Controllers\HomeController@dom_data');
