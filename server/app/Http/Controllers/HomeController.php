@@ -9,7 +9,7 @@ Use DB;
 class HomeController extends Controller
 {
 
-    public function index()
+    /*public function index()
     {
         $html='';
         $th='<tr>';
@@ -104,7 +104,7 @@ class HomeController extends Controller
         $html = "<table>".$th.$td."</table>";
         return json_encode(['status'=>true,"data"=>$html]);
         
-    }
+    }*/
     public function insert()
     {
         $data= public_path('/pages/BigGemsData.json');
@@ -160,6 +160,7 @@ class HomeController extends Controller
 
         $dataSource=isset($data_array['Desktop']['children'][0]['dataSource']) ? $data_array['Desktop']['children'][0]['dataSource'] : NULL;
         $table = strtok($dataSource,'.');
+        
         $children=NULL;
         if(!empty($data_array[$mode]['children']))
         {

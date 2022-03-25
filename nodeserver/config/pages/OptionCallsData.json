@@ -1,0 +1,86 @@
+{
+    "data" : [
+        {
+            "stock" : "HCL Tech",
+            "stockCat" : "Large Cap",
+            "cmp" : "379.70",
+            "ot" : "SELL MAR 1130 PE",
+            "price" : "34 (28 Feb @ 10.35 pm)",
+            "target" : "21 (31st Mar)",
+            "disclosure" : "No Interest"
+        } , 
+        {
+            "stock" : "HDFC Bank",
+            "stockCat" : "Large Cap",
+            "cmp" : "25.15",
+            "ot" : "SELL MAR 1430 PE",
+            "price" : "43 (28 Jan @ 02.01 pm)",
+            "target" : "25 (31st Mar)",
+            "disclosure" : "No Interest"
+        } , 
+        {
+            "stock" : "Bharti Airtel",
+            "stockCat" : "Large Cap",
+            "cmp" : "171.00",
+            "ot" : "BUY MAR 700 CE",
+            "price" : "14 (28 Feb @ 01.59 pm)",
+            "target" : "25 (31st Mar)",
+            "disclosure" : "No Interest"
+        } , 
+        {
+            "stock" : "Bharti Airtel",
+            "stockCat" : "Mid Corp",
+            "cmp" : "228.90",
+            "ot" : "SELL MAR 680 CE",
+            "price" : "21 (28 Feb @ 03.10 pm)",
+            "target" : "11 (31st Mar)",
+            "disclosure" : "No Interest"
+        } , 
+        {
+            "stock" : "TCS",
+            "stockCat" : "Large Cap",
+            "cmp" : "103.95",
+            "ot" : "SELL MAR 3540 PE",
+            "price" : "101 (28 Feb @ 11.35 am)",
+            "target" : "61 (31st Mar)",
+            "disclosure" : "No Interest"
+        } , 
+        {
+            "stock" : "TCS",
+            "stockCat" : "Large Cap",
+            "cmp" : "144.70",
+            "ot" : "BUY MAR 3700 CE",
+            "price" : "47 (28 Feb @ 12.25 pm)",
+            "target" : "76 (31st Mar)",
+            "disclosure" : "No Interest"
+        } , 
+        {
+            "stock" : "HDFC LTD",
+            "stockCat" : "Large Cop",
+            "cmp" : "39.85",
+            "ot" : "BUY MAR 2500 CE",
+            "price" : "26 (28 Feb @ 01.01 pm)",
+            "target" : "48 (31st Mar)",
+            "disclosure" : "Have Interest"
+        } , 
+        {
+            "stock" : "Hind Copper",
+            "stockCat" : "Mid Cop",
+            "cmp" : "593.0",
+            "ot" : "BUY MAR 120 CE",
+            "price" : "5.5 (28 Mar @ 11.01 am)",
+            "target" : "9.5 (31st Mar)",
+            "disclosure" : "No Interest"
+        } , 
+      
+        {
+            "stock" : "Hind Copper",
+            "stockCat" : "Mid Corp",
+            "cmp" : "117.60",
+            "ot" : "SELL MAR 115 PE",
+            "price" : "6.5 (28 Mar @ 12.35 pm)",
+            "target" : "2.5 (31st Mar)",
+            "disclosure" : "Have Interest"
+        } 
+    ]
+ }

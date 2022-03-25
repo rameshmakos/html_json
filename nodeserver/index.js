@@ -1,4 +1,6 @@
 const express = require("express");
+const fs = require("fs");
+var ShortTermInvestment=require("./config/pages/ShortTermInvestment.json");
 // Load the Amazon QLDB Driver for Node.js
 var qldb = require("amazon-qldb-driver-nodejs");
 // Load the AWS SDK for node.js
@@ -61,10 +63,11 @@ app.get("/getPerson", (req, res) => {
 //   const firstName = req.params.firstName;
 //"SELECT * FROM People"
 //'SELECT (first_name || `@` || last_name) AS full_name FROM People'   --- FOR CONCAT QUERY PURPOSE
+var sql="SELECT * FROM ShortTerm";  
   driver
     .executeLambda(async (txn) => {
       return txn.execute(
-        "SELECT * FROM People"  ,
+        sql,
         
       );
     })
@@ -101,4 +104,71 @@ app.get("/updatePersonLastName", (req, res) => {
     .then((result) => {
       driver.close();
     });
+});
+
+
+// PUT API for updating a person last name based on first name
+
+app.get("/ShortTerm_data/:mode", (req, res) => {
+  const driver = new qldb.QldbDriver("SPT-dev", myConfig);
+
+  const jsonfile = fs.readFileSync("./config/pages/ShortTermInvestment.json");  
+  var json_object = JSON.parse(jsonfile);
+  const result_array=[];
+  var mode_type=req.params.mode;
+  var children = json_object[mode_type]['children'];
+  json_object['children']=children;
+
+  delete json_object['Desktop'];  
+  delete json_object['Tab'];  
+  delete json_object['Mobile'];    
+
+  var text='';
+  children.forEach(element => {
+    text= text+element.dataSource+",";
+  });
+  const sql = text.slice(0, -1) //'abcde'
+  var final_sql="SELECT "+sql+" FROM ShortTerm";
+
+
+ 
+/*
+resultList.forEach((item) =>{
+    var temp_array=[]
+    for (const [key, value] of Object.entries(item)) {
+      temp_array.push(value);
+      console.log(`${value}`);
+    }
+    result_array.push(temp_array);
+})
+res.send(JSON.stringify(result_array, null, 2));
+*/
+
+  
+  driver
+    .executeLambda(async (txn) => {
+      return txn.execute(
+        final_sql,
+      );
+    })
+    .then((result) => {
+      const data = result.getResultList();
+      const response = Object.values(JSON.parse(JSON.stringify(data)));
+      response.forEach((item) =>{          
+          var temp_array=[]
+          for (const [key, value] of Object.entries(item)) {
+            temp_array.push(value);
+          }
+          result_array.push(temp_array);
+      })
+      //Pretty print the result list
+      //console.log("The result List is ", JSON.stringify(resultList, null, 2));
+      //console.log(resultList);
+      json_object['data']=result_array;
+      res.send(json_object);
+    })
+    .then((result) => {
+      driver.close();
+    });
+      
 });

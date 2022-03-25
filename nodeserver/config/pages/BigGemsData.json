@@ -1,0 +1,37 @@
+{
+    "data" : [
+        {
+            "stock" : "Adani Wilmar",
+            "cmp" : "379.40",
+            "bs" : "Buy @ 366 (28th Feb)",
+            "target" : "388 (3 Month)",
+            "description" : "lorem esprima description  del stock pariatur pariatur pari  minus to the givn poin of the view th",
+            "disclosure" : "Have Interest"
+        },
+        {
+            "stock" : "Adani Enterprise",
+            "cmp" : "1634.25",
+            "bs" : "Buy @ 1.619 (28th Feb)",
+            "target" : "1717 (3 Month)",
+            "description" : " Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro laborum commodi, dolor quisquam quaerat dicta reiciendis suscipit, voluptas totam ullam molestias, impedit quo odio voluptatem obcaecati cumque ab sit doloribus.",
+            "disclosure" : "No Interest"
+        },
+        {
+            "stock" : "Adani Wilmar",
+            "cmp" : "379.40",
+            "bs" : "Buy @ 366 (28th Feb)",
+            "target" : "388 (3 Month)",
+            "description" : "lorem esprima description  del stock pariatur pariatur pari  minus to the givn poin of the view th",
+            "disclosure" : "No Interest"
+        },
+        {
+            "stock" : "Adani Wilmar",
+            "cmp" : "379.40",
+            "bs" : "Buy @ 366 (28th Feb)",
+            "target" : "388 (3 Month)",
+            "description" : "lorem esprima description  del stock pariatur pariatur pari  minus to the givn poin of the view th",
+            "disclosure" : "No Interest"
+        }
+    ]
+ }
+
