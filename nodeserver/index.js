@@ -13,21 +13,40 @@ const sptRoute = require("./routes/sptRoute")
 var myConfig = new AWS.Config();
 myConfig.update({ region: "us-east-1" });
 const app = express();
+   
+var jsonParser = bodyParser.json();
 
-app.use('/api', sptRoute)
+app.use('/api', jsonParser, sptRoute)
 
 app.use(cors())
-const port = 5000;
+const port = 6000;
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
+app.use(express.static('public'));
+// app.use(require('connect').bodyParser());
 
+app.use(function (req, res) {
+  res.setHeader('Content-Type', 'application/json')
+  // res.write('you posted:\n')
+  res.end(JSON.stringify(req.body, null, 2))
+})
+
+
+// var bodyParser = require('body-parser')
+var router = express.Router();
+
+
+router.post('/one', jsonParser, function(req, res){
+  console.log(JSON.stringify(req.body));
+  res.send(req.body);
+});
 
 // middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 
 app.listen(port, () =>
   console.log(`Example app listening at http://localhost:${port}`)
@@ -58,6 +77,8 @@ var sql="SELECT * FROM ShortTerm";
       driver.close();
     });
 });
+
+
 // PUT API for updating a person last name based on first name
 app.get("/updatePersonLastName", (req, res) => {
   const driver = new qldb.QldbDriver("SPT-dev", myConfig);
@@ -67,6 +88,8 @@ app.get("/updatePersonLastName", (req, res) => {
 //     person.lastName,
 //     person.firstName
 //   );
+
+
     const person = { firstName: 'John', lastName: 'Gurram' };
     var sql = "UPDATE People SET last_name = '"+person.lastName+"' WHERE first_name = 'John'"
   driver

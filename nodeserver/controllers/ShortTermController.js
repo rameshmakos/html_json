@@ -1,3 +1,14 @@
+var express = require('express')
+var bodyParser = require('body-parser')
+
+var app = express()
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+app.use(express.json());
 
 const fs = require("fs");
 const uniqid = require("uniqid");
@@ -222,7 +233,7 @@ const updateShortTermRecord = (req, res) => {
 
 }
 
-const readData = async (req, res) => {     
+const readData = async (req, res) => {
     const qldbDriver = new qldb.QldbDriver("SPT-dev", myConfig);
     const jsonfile = fs.readFileSync("./config/pages/ShortTermInvestment.json");
     var json_object = JSON.parse(jsonfile);
@@ -244,43 +255,66 @@ const readData = async (req, res) => {
     var final_sql = "SELECT " + sql + " FROM ShortTermInvestment";
 
     await qldbDriver.executeLambda(async (txn) => {
+        sampleQuery = 'SELECT * FROM ShortTermInvestment';
         const result = await txn.execute(final_sql);
         const resultList = result.getResultList();
-        console.log('LAMBDA RESULT -', resultList);
+        json_object['data'] = resultList;
+        // console.log('LAMBDA RESULT -', resultList);
 
-        res.json({ message : 'Success', data : resultList });
+        // res.json({ message : 'Success', data : resultList });
+        res.send(json_object);
         res.end();
     });
-     
+
 };
 
 
-const createData = async (req, res) => {     
+//function to insert new short term record in the 'ShortTermInvestment' Table
+const createData = async (req, res) => {
     const qldbDriver = new qldb.QldbDriver("SPT-dev", myConfig);
-    const data = req.body;
+    var document = req.body;
+    document.id = uniqid();
+    console.log('INputs - ', document);
     // var final_sql = "SELECT * FROM ShortTermInvestment";
     //docIdArray[0].get('documentId').stringValue(); to check doc id
 
-
     await qldbDriver.executeLambda(async (txn) => {
-        const document = {
-            stock: "Hind Copper",
-            stockCat: "Mid Corp",
-            cmp: "117.60",
-            bs: "Buy",
-            price: "154 (23th Mar @ 12.35 pm)",
-            target: "28.5 (31st Mar)",
-            disclosure: "Have Interest"
-        }
 
         const query = 'INSERT INTO ShortTermInvestment ?';
+
         const result = await txn.execute(query, document);
         const resultList = result.getResultList();
         console.log('LAMBDA RESULT -', resultList);
-        res.json({ message : 'Record created Successfully', data : resultList });
+        res.json({ message: 'Record created Successfully', data: resultList });
         res.end();
+
+        // res.json({ data : data});
     });
-     
+
+};
+
+const updateData = async (req, res) => {
+    const qldbDriver = new qldb.QldbDriver("SPT-dev", myConfig);
+    const id = req.params.id;
+
+    const document = req.body;
+    console.log('Update Inputs - ', document); 
+
+    await qldbDriver.executeLambda(async (txn) => {
+
+        //an update query to modify given document with the updated data
+        const query = 'UPDATE ShortTermInvestment AS ST SET ST.stock = ?, ST.stockCat = ?, ST.bs = ?, ST.price = ?, ST.target = ?, ST.disclosure = ? WHERE ST.id = ?';
+
+        const result = await txn.execute(query, document.stock, document.stockCat, document.bs, document.price, document.target, document.disclosure, id);
+        const resultList = result.getResultList();
+        console.log('LAMBDA UPDATE RESULT -', resultList);
+        res.json({ message: 'Record updated Successfully', data: resultList });
+        res.end();
+
+        // res.json({ data : `document update id is  = ${id}`});
+    });
+    
+
 };
 
 
@@ -294,5 +328,6 @@ module.exports = {
     updateShortTermRecord,
 
     readData,
-    createData
+    createData,
+    updateData
 };  
