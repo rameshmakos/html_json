@@ -6,9 +6,9 @@ const { createTable,
         readShortTermRecordsAdmin, 
         createShortTermRecord, 
         updateShortTermRecord,
-
-
-        newListShort
+        
+        readData,
+        createData
     } = require('../controllers/ShortTermController');
 
 router.get('/', (req, res) => {
@@ -22,6 +22,10 @@ router.get('/ShortTerm_data/:mode', readShortTermRecords); //list client side re
 router.get('/admin/ShortTerm_data/:mode', readShortTermRecordsAdmin); //list admin records
 router.post('/admin/ShortTerm_data', createShortTermRecord); //create record
 router.delete('/admin/ShortTerm_data', updateShortTermRecord); //update record
+
+//formal experiment routes
+router.get('/datameta/:mode', readData); //list client side records  
+router.post('/datameta', createData); //create client side records 
 
 
 

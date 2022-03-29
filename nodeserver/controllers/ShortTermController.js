@@ -222,6 +222,68 @@ const updateShortTermRecord = (req, res) => {
 
 }
 
+const readData = async (req, res) => {     
+    const qldbDriver = new qldb.QldbDriver("SPT-dev", myConfig);
+    const jsonfile = fs.readFileSync("./config/pages/ShortTermInvestment.json");
+    var json_object = JSON.parse(jsonfile);
+    const result_array = [];
+    var mode_type = req.params.mode;
+    var children = json_object[mode_type]['children'];
+    json_object['children'] = children;
+
+    delete json_object['Desktop'];
+    delete json_object['Tab'];
+    delete json_object['Mobile'];
+
+    var text = '';
+    children.forEach(element => {
+        text = text + element.dataSource + ",";
+    });
+    const sql = text.slice(0, -1) //'abcde'
+    console.log('Final SQL QUERY - ', sql);
+    var final_sql = "SELECT " + sql + " FROM ShortTermInvestment";
+
+    await qldbDriver.executeLambda(async (txn) => {
+        const result = await txn.execute(final_sql);
+        const resultList = result.getResultList();
+        console.log('LAMBDA RESULT -', resultList);
+
+        res.json({ message : 'Success', data : resultList });
+        res.end();
+    });
+     
+};
+
+
+const createData = async (req, res) => {     
+    const qldbDriver = new qldb.QldbDriver("SPT-dev", myConfig);
+    const data = req.body;
+    // var final_sql = "SELECT * FROM ShortTermInvestment";
+    //docIdArray[0].get('documentId').stringValue(); to check doc id
+
+
+    await qldbDriver.executeLambda(async (txn) => {
+        const document = {
+            stock: "Hind Copper",
+            stockCat: "Mid Corp",
+            cmp: "117.60",
+            bs: "Buy",
+            price: "154 (23th Mar @ 12.35 pm)",
+            target: "28.5 (31st Mar)",
+            disclosure: "Have Interest"
+        }
+
+        const query = 'INSERT INTO ShortTermInvestment ?';
+        const result = await txn.execute(query, document);
+        const resultList = result.getResultList();
+        console.log('LAMBDA RESULT -', resultList);
+        res.json({ message : 'Record created Successfully', data : resultList });
+        res.end();
+    });
+     
+};
+
+
 
 
 module.exports = {
@@ -231,4 +293,6 @@ module.exports = {
     createShortTermRecord,
     updateShortTermRecord,
 
+    readData,
+    createData
 };  
