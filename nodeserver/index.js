@@ -19,7 +19,7 @@ var jsonParser = bodyParser.json();
 app.use('/api', jsonParser, sptRoute)
 
 app.use(cors())
-const port = 6000;
+const port = 8000;
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -30,19 +30,21 @@ app.use(express.static('public'));
 
 app.use(function (req, res) {
   res.setHeader('Content-Type', 'application/json')
+  res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
   // res.write('you posted:\n')
-  res.end(JSON.stringify(req.body, null, 2))
+  // res.end(JSON.stringify(req.body, null, 2))
+  
 })
 
 
-// var bodyParser = require('body-parser')
-var router = express.Router();
-
-
-router.post('/one', jsonParser, function(req, res){
-  console.log(JSON.stringify(req.body));
-  res.send(req.body);
+// ## CORS middleware
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
 });
+
+// var bodyParser = require('body-parser')
 
 // middleware
 // app.use(express.json());

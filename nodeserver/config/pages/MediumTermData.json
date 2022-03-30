@@ -32,7 +32,7 @@
             "cmp" : "228.90",
             "price" : "144 (17th Feb @ 03.10 pm)",
             "target" : "215 (31st Mar)",
-            "info" : "the little info card",
+            "info" : "the little info card about the given stock is here",
             "disclosure" : "Have Interest",
             "readmore" : "Read More"
         } , 
@@ -41,7 +41,7 @@
             "cmp" : "103.95",
             "price" : "123 (16th Feb @ 11.35 am)",
             "target" : "343 (31st Mar)",
-            "info" : "the little info card Lorem ipsum dolor sit amet consectetur adipisicing elit. <br /> c eius numquam quisquam necessitatibus esse iste fugiat perspiciatis, <br />  earum, iusto reiciendis temporibus!",
+            "info" : "the little info card Lorem ipsum dolor sit amet consectetur adipisicing elit. eius numquam quisquam necessitatibus esse iste fugiat perspiciatis, <br />  earum, iusto reiciendis temporibus!",
             "disclosure" : "Have Interest",
             "readmore" : "Read More"
         } 

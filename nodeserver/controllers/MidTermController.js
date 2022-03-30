@@ -26,18 +26,18 @@ myConfig.update({ region: "us-east-1" });
 const createIndex = function (driver, callback) {
     driver
         .executeLambda(async (txn) => {
-            txn.execute("CREATE INDEX ON ShortTermInvestment(Id)");
+            txn.execute("CREATE INDEX ON MediumTermInvestment(Id)");
         })
         .then(callback);
 };
 
 
 // API to create table 'ShortTerm' in the ledger 
-const createTable = (req, res) => {
+const createTableMediumTerm = (req, res) => {
     const driver = new qldb.QldbDriver("SPT-dev", myConfig);
     driver
         .executeLambda(async (txn) => {
-            txn.execute("CREATE TABLE ShortTermInvestment");
+            txn.execute("CREATE TABLE MediumTermInvestment");
         })
         .then(() => {
             createIndex(driver, function () {
@@ -45,17 +45,17 @@ const createTable = (req, res) => {
             });
         })
         .then((result) => {
-            res.json({ result: 'Created Table Successfully!' });
+            res.json({ result: 'Created Midiumterm Table Successfully!' });
         });
 }
 
 
 
 // API to read all short term data for all screen size
-const readShortTermRecords = (req, res) => {
+const readMediumTermRecords = (req, res) => {
     const driver = new qldb.QldbDriver("SPT-dev", myConfig);
     res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
-    const jsonfile = fs.readFileSync("./config/pages/ShortTermInvestment.json");
+    const jsonfile = fs.readFileSync("./config/pages/MediumTermInvestment.json");
     var json_object = JSON.parse(jsonfile);
     const result_array = [];
     var mode_type = req.params.mode;
@@ -72,8 +72,7 @@ const readShortTermRecords = (req, res) => {
     });
     const sql = text.slice(0, -1) //'abcde'
     console.log('Final SQL QUERY - ', sql);
-    var final_sql = "SELECT " + sql + " FROM ShortTermInvestment";
-
+    var final_sql = "SELECT " + sql + " FROM MediumTermInvestment";
 
 
     driver
@@ -106,83 +105,38 @@ const readShortTermRecords = (req, res) => {
 };
 
 
-// Api to create a new short term record in the admin section
-const createShortTermRecord = (req, res) => {
-    const driver = new qldb.QldbDriver("SPT-dev", myConfig);
-    const data = req.body;
-
-    var newData = {
-        stock: 'PatelEng',
-        stockCat: "Micro Cop",
-        cmp: "25.15",
-        bs: "Buy",
-        price: "31 (5th Jan @ 02.01 pm)",
-        target: "33 (31st Mar)",
-        disclosure: "Have Interest"
-    };
-    console.log('Old Object - ', newData);
-    newData.id = uniqid();
-    console.log('New Object - ', newData);
-
-    // console.log('ABC -', req.body);
-    // var final_sql = "SELECT " + sql + " FROM ShortTerm";
-    var final_sql = "INSERT INTO ShortTermInvestment ?";
-
-    driver
-        .executeLambda((txn) => {
-            txn.execute(final_sql, newData);
-
-        })
-        .then(() => {
-            res.json({ message: 'Created Record Successfully!', data: newData });
-        })
-        .then((result) => {
-            driver.close();
-        });
-
-}
-
-
-// Api to create a new short term record in the admin section
-const updateShortTermRecord = (req, res) => {
-    const driver = new qldb.QldbDriver("SPT-dev", myConfig);
-    const data = req.body;
-
-    var newData = {
-        stock: 'Shipping Power',
-        stockCat: "XXX Corp",
-        cmp: "-",
-        bs: "Buy",
-        price: "123 (16th Feb @ 11.35 am)",
-        target: "343 (31st Mar)",
-        disclosure: "Have Interest"
-    };
-    // newData = JSON.stringify(newData);
-    // console.log('ABC -', req.body);
-    // var final_sql = "SELECT " + sql + " FROM ShortTerm";
-    // var final_sql = "UPDATE ShortTermInvestment SET stockCat = ? WHERE stock = ?";
-    var delete_sql = "DELETE FROM ShortTermInvestment WHERE stock = ?";
-
-    driver
-        .executeLambda((txn) => {
-            txn.execute(delete_sql, 'Adano Willmar');
-
-        })
-        .then(() => {
-            // res.send(JSON.stringify("{result: 'Added Record Successfully!'}"));
-            res.json({ message: 'Updated Record Successfully!', data: newData });
-        })
-        .then((result) => {
-            driver.close();
-        });
-
-}
-
-///function to read list of records for admin site
-const readData = async (req, res) => {
+//function to insert new short term record in the 'ShortTermInvestment' Table from admin site
+const createMediumTermData = async (req, res) => {
     res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
     const qldbDriver = new qldb.QldbDriver("SPT-dev", myConfig);
-    const jsonfile = fs.readFileSync("./config/pages/ShortTermInvestment.json");
+    var document = req.body;
+    document.id = uniqid();
+    console.log('INputs Medium Term - ', document);
+    // var final_sql = "SELECT * FROM ShortTermInvestment";
+    //docIdArray[0].get('documentId').stringValue(); to check doc id
+
+    await qldbDriver.executeLambda(async (txn) => {
+
+        const query = 'INSERT INTO MediumTermInvestment ?';
+
+        const result = await txn.execute(query, document);
+        const resultList = result.getResultList();
+        console.log('LAMBDA RESULT -', resultList);
+        res.json({ message: 'Record created Successfully', data: resultList });
+        res.end();
+
+        // res.json({ data : data});
+    });
+
+};
+
+
+//function to read admin side midterm records
+///function to read list of records for admin site
+const readMediumTermData = async (req, res) => {
+    res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+    const qldbDriver = new qldb.QldbDriver("SPT-dev", myConfig);
+    const jsonfile = fs.readFileSync("./config/pages/MediumTermInvestment.json");
     var json_object = JSON.parse(jsonfile);
     const result_array = [];
     var mode_type = 'Admin';
@@ -200,10 +154,10 @@ const readData = async (req, res) => {
     });
     const sql = text.slice(0, -1) //'abcde'
     console.log('Final SQL QUERY reading- ', sql);
-    var final_sql = "SELECT " + sql + " FROM ShortTermInvestment";
+    var final_sql = "SELECT " + sql + " FROM MediumTermInvestment";
 
     await qldbDriver.executeLambda(async (txn) => {
-        sampleQuery = 'SELECT * FROM ShortTermInvestment';
+        sampleQuery = 'SELECT * FROM MediumTermInvestment';
         const result = await txn.execute(sampleQuery);
         const resultList = result.getResultList();
         json_object['data'] = resultList;
@@ -216,34 +170,8 @@ const readData = async (req, res) => {
 
 };
 
-
-//function to insert new short term record in the 'ShortTermInvestment' Table from admin site
-const createData = async (req, res) => {
-    res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
-    const qldbDriver = new qldb.QldbDriver("SPT-dev", myConfig);
-    var document = req.body;
-    document.id = uniqid();
-    console.log('INputs - ', document);
-    // var final_sql = "SELECT * FROM ShortTermInvestment";
-    //docIdArray[0].get('documentId').stringValue(); to check doc id
-
-    await qldbDriver.executeLambda(async (txn) => {
-
-        const query = 'INSERT INTO ShortTermInvestment ?';
-
-        const result = await txn.execute(query, document);
-        const resultList = result.getResultList();
-        console.log('LAMBDA RESULT -', resultList);
-        res.json({ message: 'Record created Successfully', data: resultList });
-        res.end();
-
-        // res.json({ data : data});
-    });
-
-};
-
 //function to update new short term record in the 'ShortTermInvestment' Table
-const updateData = async (req, res) => {
+const updateMediumTermData = async (req, res) => {
     res.set('Access-Control-Allow-Origin', 'http://localhost:3000/api/admin');
     const qldbDriver = new qldb.QldbDriver("SPT-dev", myConfig);
     const id = req.body.id;
@@ -254,9 +182,9 @@ const updateData = async (req, res) => {
     await qldbDriver.executeLambda(async (txn) => {
 
         //an update query to modify given document with the updated data
-        const query = 'UPDATE ShortTermInvestment AS ST SET ST.stock = ?, ST.stockCat = ?, ST.bs = ?, ST.price = ?, ST.target = ?, ST.disclosure = ? WHERE ST.id = ?';
+        const query = 'UPDATE MediumTermInvestment AS ST SET MT.stock = ?, MT.price = ?, MT.target = ?, MT.info = ?, MT.disclosure = ? WHERE MT.id = ?';
 
-        const result = await txn.execute(query, document.stock, document.stockCat, document.bs, document.price, document.target, document.disclosure, id);
+        const result = await txn.execute(query, document.stock, document.price, document.target, document.info, document.disclosure, id);
         const resultList = result.getResultList();
         console.log('LAMBDA UPDATE RESULT -', resultList);
         res.json({ message: 'Record updated Successfully', data: resultList });
@@ -269,7 +197,7 @@ const updateData = async (req, res) => {
 
 
 //function to delete a record from table with id
-const deleteData = async (req, res) => {
+const deleteMediumTermData = async (req, res) => {
     res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
     const qldbDriver = new qldb.QldbDriver("SPT-dev", myConfig);
     const id = req.params.id;
@@ -277,14 +205,14 @@ const deleteData = async (req, res) => {
     await qldbDriver.executeLambda(async (txn) => {
 
         //an update query to modify given document with the updated data
-        const query = 'DELETE FROM ShortTermInvestment AS ST WHERE ST.id = ?'; ///Hind Copper
+        const query = 'DELETE FROM MediumTermInvestment AS MT WHERE MT.id = ?'; ///Hind Copper
         const newQuery = 'DELETE FROM ShortTermInvestment WHERE stock = ?'
        
 
-        const result = await txn.execute(newQuery, 'Hind Copper');
+        const result = await txn.execute(query, id);
         const resultList = result.getResultList();
         // console.log('LAMBDA DELETE RESULT -', resultList);
-        res.json({ message: 'Record deleted Successfully 17.80', data: resultList });
+        res.json({ message: 'Record deleted Successfully ', data: resultList });
         res.end();
 
     });
@@ -294,18 +222,13 @@ const deleteData = async (req, res) => {
 
 
 
-
-
-
 module.exports = {
-    createTable,
-    readShortTermRecords,
+    createTableMediumTerm,
+    readMediumTermRecords,
 
-    createShortTermRecord,
-    updateShortTermRecord,
+    createMediumTermData,
+    readMediumTermData,
+    updateMediumTermData,
+    deleteMediumTermData
 
-    readData,
-    createData,
-    updateData,
-    deleteData
-};  
+}
