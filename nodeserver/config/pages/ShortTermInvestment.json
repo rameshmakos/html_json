@@ -12,14 +12,14 @@
             "name":"Stock ",
             "visibility":true,
             "style":{
-               "width":"10%",
+               "width":"25%",
                "padding":"12px",
                "fontSize":"14px",
                "fontWeight":600,
                "letterSpacing":"0.025em",
                "textAlign":"center",
                "lineHeight":"20px",
-               "backgroundColor":"lightgreen"
+               "backgroundColor":"yellow"
             },
             "dataSource":"stock"
          },
@@ -135,7 +135,7 @@
                "letterSpacing":"0.025em",
                "textAlign":"center",
                "lineHeight":"20px",
-               "backgroundColor":"lightgreen"
+               "backgroundColor":"yellow"
             },
             "dataSource": " stock ||','|| stockCat ||','|| cmp AS stock "
          },

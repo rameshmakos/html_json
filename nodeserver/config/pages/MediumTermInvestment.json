@@ -257,22 +257,6 @@
             "dataSource":"stock"
          },
          {
-            "id":"D1222",
-            "name":"CMP",
-            "visibility":true,
-            "style":{
-               "width":"5%",
-               "padding":"12px",
-               "fontSize":"14px",
-               "fontWeight":600,
-               "letterSpacing":"0.025em",
-               "textAlign":"center",
-               "lineHeight":"20px",
-               "backgroundColor":"yellow"
-            },
-            "dataSource":"cmp"
-         },
-         {
             "id":"D1223",
             "name":"Price",
             "visibility":true,

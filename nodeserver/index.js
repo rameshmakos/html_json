@@ -19,6 +19,7 @@ var jsonParser = bodyParser.json();
 app.use('/api', jsonParser, sptRoute)
 
 app.use(cors())
+
 const port = 8000;
 
 // parse application/x-www-form-urlencoded
@@ -47,8 +48,12 @@ app.use(function(req, res, next) {
 // var bodyParser = require('body-parser')
 
 // middleware
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.get('/',  (req, res) => {
+  res.send('NODE_ENV');
+})
 
 app.listen(port, () =>
   console.log(`Example app listening at http://localhost:${port}`)
